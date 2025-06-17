@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>leeseungmin</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+  <style>
+    :root {
+      --thumbnail-width: calc(100vw / 4 - 24px);
+      --font-size: clamp(10px, 0.75vw, 12px);
+      --column-gap: 12px;
+      --grid-padding: 20px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'SF Pro Text','Pretendard', sans-serif;
+      font-size: var(--font-size);
+      color: #121212;
+      background-color: #fff;
+      letter-spacing: -0.01em;
+      font-weight: 500;
+      padding: 0 var(--grid-padding);
+    }
+    a {
+      color: #121212;
+      text-decoration: none;
+      position: relative;
+    }
+    a:visited, a:active {
+      color: #121212;
+      text-decoration: none;
+    }
+    .nav-links a:not(:first-child):not([href^="mailto"]),
+    .social-links a:not([href^="mailto"]):not(:last-child) {
+      position: relative;
+    }
+    .nav-links a:not(:first-child):not([href^="mailto"]):after,
+    .social-links a:not([href^="mailto"]):not(:last-child):after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 100%;
+      height: 1px;
+      background-color: #121212;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:not(:first-child):hover:after,
+    .social-links a:not([href^="mailto"]):not(:last-child):hover:after {
+      transform: scaleX(1);
+    }
+    header {
+      max-width: 1920px;
+      margin: 10px auto 54px auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: transparent;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 22px;
+      letter-spacing: -0.07em;
+      font-weight: 700;
+      grid-column: 1;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      justify-content: flex-start;
+      grid-column: 2;
+    }
+    .social-links {
+      display: flex;
+      gap: 40px;
+      justify-content: flex-end;
+      grid-column: 4;
+    }
+    nav a, .social-links a {
+      font-weight: 500;
+      font-size: var(--font-size);
+    }
+    .nav-links a:first-child {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 70px 12px;
+    }
+    .project-item-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .project-item {
+      width: 100%;
+    }
+    .thumbnail-wrapper {
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .thumbnail {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .thumbnail-wrapper:hover .thumbnail {
+      transform: scale(1.1);
+    }
+    .project-info {
+      margin-top: 8px;
+    }
+    .project-info h3 {
+      font-size: var(--font-size);
+      margin-bottom: 2px;
+      font-weight: 700;
+      color: #121212;
+    }
+    .project-info p {
+      font-size: var(--font-size);
+      font-weight: 400;
+      color: #121212;
+    }
+    footer {
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: 60px 0 20px 0;
+      font-size: var(--font-size);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+    }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1;
+    }
+    .footer-copy {
+      display: flex;
+      justify-content: flex-start;
+      grid-column: 2;
+    }
+    .footer-copy-hidden {
+      display: none;
+    }
+    .footer-scroll {
+      display: flex;
+      justify-content: flex-end;
+      grid-column: 4;
+    }
+    .scroll-top {
+      text-align: right;
+      cursor: pointer;
+    }
+    .scroll-top:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 1440px) {
+      .project-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      header {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      header {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-links {
+        grid-column: 2;
+      }
+    }
+    @media (max-width: 768px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      header {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links {
+        grid-column: 2;
+      }
+      .social-links {
+        display: none;
+      }
+      .footer-copy {
+        display: none;
+      }
+    }
+    @media (max-width: 480px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      header {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        grid-column: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html">seungminlee</a></div>
+    <div class="nav-links">
+      <a href="index.html">Project</a>
+      <a href="informaion.html">Information</a>
+    </div>
+    <div></div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/leeseungmln/" target="_blank">Instagram</a>
+      <a href="https://www.behance.net/esh14123c1f" target="_blank">Behance</a>
+      <a href="mailto:leeseungmin.work@gmail.com" target="_blank">leeseungmin.work@gmail.com</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-grid">
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/1.jpg" class="thumbnail"></div><div class="project-info"><h3>Pledis Corporate Identity Renewal (2025)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/2.jpg" class="thumbnail"></div><div class="project-info"><h3>GROSO Brand Identity (2025)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/3.jpg" class="thumbnail"></div><div class="project-info"><h3>LCMD Brand Identity (2025)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/4.jpg" class="thumbnail"></div><div class="project-info"><h3>DORCO Corporate Identity Renewal (2024)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/5.jpg" class="thumbnail"></div><div class="project-info"><h3>Channel A Corporate Identity Renewal (2024)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/6.jpg" class="thumbnail"></div><div class="project-info"><h3>Share X Conference Design(2024)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/7.jpg" class="thumbnail"></div><div class="project-info"><h3>Kaywon Play Sans (2023)</h3><p>Typeface Design</p></div></div></a>
+      <a href="Project/Dorco.html" class="project-item-link"><div class="project-item"><div class="thumbnail-wrapper"><img src="img/8.jpg" class="thumbnail"></div><div class="project-info"><h3>Delete Identity Design (2023)</h3><p>Brand Identity, Website, Motion, Digital Design</p></div></div></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-contact">Contact<br><a href="mailto:leeseungmin.work@gmail.com">leeseungmin.work@gmail.com</a></div>
+    <div class="footer-copy">©Copyright 2025 leeseungmin.work</div>
+    <div></div>
+    <div class="footer-scroll"><div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Scroll Top</div></div>
+  </footer>
+</body>
+</html>

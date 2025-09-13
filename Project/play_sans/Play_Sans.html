@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>leeseungmin</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+<link rel="icon" href="../favicon.png" type="image/png" />
+  <style>
+    html {
+    overflow-y: scroll;
+    }
+    :root {
+      --font-size: clamp(10px, 0.75vw, 12px);
+      --grid-padding: 20px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'SF Pro Text','Pretendard', sans-serif;
+      font-size: var(--font-size);
+      color: #121212;
+      background-color: #fff;
+      letter-spacing: -0.01em;
+      font-weight: 500;
+      padding: 0 var(--grid-padding);
+    }
+    a {
+      color: #121212;
+      text-decoration: none;
+      position: relative;
+    }
+    a:visited, a:active {
+      color: #121212;
+      text-decoration: none;
+    }
+    .nav-links a:not(:first-child):not([href^="mailto"]),
+    .social-links a:not([href^="mailto"]):not(:last-child) {
+      position: relative;
+    }
+    .nav-links a:not(:first-child):not([href^="mailto"]):after,
+    .social-links a:not([href^="mailto"]):not(:last-child):after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 100%;
+      height: 1px;
+      background-color: #121212;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:not(:first-child):hover:after,
+    .social-links a:not([href^="mailto"]):not(:last-child):hover:after {
+      transform: scaleX(1);
+    }
+    .nav-links a:nth-child(1) {
+      text-decoration: underline;
+    }
+    header {
+
+      margin: 10px auto 54px auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: transparent;
+    }
+    .logo {
+      font-size: 22px;
+      letter-spacing: -0.07em;
+      font-weight: 700;
+      grid-column: 1;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      justify-content: flex-start;
+      grid-column: 2;
+    }
+    .social-links {
+      display: flex;
+      gap: 40px;
+      justify-content: flex-end;
+      grid-column: 4;
+    }
+    nav a, .social-links a {
+      font-weight: 500;
+      font-size: var(--font-size);
+    }
+    main {
+
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .project-info {
+      grid-column: 1;
+      font-size: var(--font-size);
+      line-height: 1.6;
+    }
+    .project-info h2 {
+      font-size: var(--font-size);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .project-info p {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      margin-bottom: 10px;
+      color: #606060; 
+    }
+    .project-visual {
+      grid-column: 2 / span 3;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-left: 0;
+    }
+    .project-visual img,
+    .project-visual video{
+      width: 100%;
+      height: auto;
+    }
+    .image-row {
+      display: flex;
+      gap: 12px;
+    }
+    .image-row img,
+    .image-row video {
+      width: calc(50% - 6px);
+      height: auto;
+    }
+
+   
+
+
+
+    footer {
+
+      margin: 0 auto;
+      padding: 250px 0 20px 0;
+      font-size: var(--font-size);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+    }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1;
+    }
+    .footer-copy {
+      display: flex;
+      justify-content: flex-start;
+      grid-column: 2;
+    }
+    .footer-scroll {
+      display: flex;
+      justify-content: flex-end;
+      grid-column: 4;
+    }
+    .scroll-top {
+      text-align: right;
+      cursor: pointer;
+    }
+    .scroll-top:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 1024px) {
+      header, footer, main {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-links {
+        grid-column: 2;
+      }
+      .project-info {
+        grid-column: 1 / span 3;
+      }
+      .project-visual {
+        grid-column: 1 / span 3;
+      }
+    }
+    @media (max-width: 768px) {
+      header, main, footer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .social-links {
+        display: none;
+      }
+      .project-info, .project-visual {
+        grid-column: 1 / span 2;
+      }
+      .footer-copy {
+        display: none;
+      }
+    }
+ @media (max-width: 480px) {
+  header {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  .logo {
+    grid-column: 1;
+  }
+  .nav-links {
+    grid-column: 2;
+    justify-content: flex-end;
+  }
+  .social-links {
+    display: none;
+  }
+  main {
+    grid-template-columns: 1fr;
+  }
+  .project-info,
+  .project-visual {
+    grid-column: 1;
+  }
+  footer {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .footer-contact {
+    justify-content: flex-start;
+    text-align: left;
+    grid-column: 1;
+  }
+  .footer-copy {
+    display: none;
+  }
+  .footer-scroll {
+    justify-content: flex-end;
+    text-align: right;
+    grid-column: 4;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="../../index.html">3.6.9</a></div>
+    <div class="nav-links">
+      <a href="../../index.html">Project</a>
+      <a href="../../informaion.html">Information</a>
+    </div>
+    <div></div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/leeseungmln/" target="_blank">Instagram</a>
+      <a href="https://www.behance.net/esh14123c1f" target="_blank">Behance</a>
+      <a href="mailto:leeseungmin.work@gmail.com" target="_blank">leeseungmin.work@gmail.com</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="project-info">
+
+  
+      <h2>Kaywon Play Sans</h2>
+      <p>클라이언트: 계원예술대학교<br>
+      크리에이티브 디렉터: 최미선<br>
+      디자이너: 이승민</p>
+
+      <h2>Project Information</h2>
+      <p class="project-description">
+        Kaywon PLAY Sans Black는 계원예술대학교의 전용서체입니다.<br>
+        개별 글리프의 무거운 중량감과 곡선적 형태는 악보, 음표, 이퀄라이저 등 음악의 조형요소들을 메타포로 시각화하여 개발된
+        Play Sans는 견고한 기둥, 원형, 멀티 라인 등의 음악의 고유한 특징을 드러냅니다.
+        대문자의 Solid Type과 소문자의 Multi Line으로 단순화한 조형으로 강하지만 부드럽고 친근한 인상을 주는 모던 타이포그래피를 연출합니다.
+      </p>
+      <h2><a href="https://www.kaywon.ac.kr/CmsHome/MainDefault.aspx">→ Kaywon University</a></h2>
+      <h2><a href="https://www.behance.net/gallery/233259543/Kaywon-University-BI-Play-Sans-Black">→ Behance Link</a></h2>
+
+    </div>
+    <div class="project-visual">
+      <img src="Image/1.jpg" alt="Project Visual 1">
+      <video src="Video/mtn_1.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+      <div class="image-row">
+        <img src="Image/2_1.jpg" alt="Project Visual 3">
+        <img src="Image/2_2.jpg" alt="Project Visual 3">
+      </div>
+      <video src="Video/mtn_2.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+      <div class="image-row">
+        <img src="Image/3_1.jpg" alt="Project Visual 3">
+        <img src="Image/3_2.jpg" alt="Project Visual 3">
+      </div>
+
+      <video src="Video/mtn_3.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+      <img src="Image/4.jpg" alt="Project Visual 1">
+      <div class="image-row">
+        <img src="Image/3_1.jpg" alt="Project Visual 3">
+        <img src="Image/3_2.jpg" alt="Project Visual 3">
+      </div>
+      <div class="image-row">
+        <video src="Video/mtn_4_1.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+        <video src="Video/mtn_4_2.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+      </div>
+      <img src="Image/5.jpg" alt="Project Visual 1">
+      <div class="image-row">
+        <img src="Image/6_1.jpg" alt="Project Visual 3">
+        <img src="Image/6_2.jpg" alt="Project Visual 3">
+      </div>
+      <video src="Video/mtn_5.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+      <video src="Video/mtn_6.mp4" alt="Project Visual 2" autoplay muted loop playsinline></video>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-contact">Contact<br><a href="mailto:leeseungmin.work@gmail.com">leeseungmin.work@gmail.com</a></div>
+    <div class="footer-copy">©Copyright 2025 leeseungmin.work</div>
+    <div></div>
+    <div class="footer-scroll"><div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Scroll Top</div></div>
+  </footer>
+</body>
+</html>
